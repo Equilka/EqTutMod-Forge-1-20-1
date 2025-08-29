@@ -17,12 +17,12 @@ import net.minecraft.world.level.material.MapColor;
 
 
 public class SkyBlock extends Block {
-    public static BooleanProperty ACTIVATED = BooleanProperty.create("activated");
-    public static BooleanProperty UPDATE = BooleanProperty.create("update");
+    public static final BooleanProperty ACTIVATED = BooleanProperty.create("activated");
+    public static final BooleanProperty UPDATE = BooleanProperty.create("update");
 
     public SkyBlock() {
         super(BlockBehaviour.Properties.of()
-                .mapColor(MapColor.STONE)
+                .mapColor(MapColor.COLOR_LIGHT_BLUE)
                 .noOcclusion()
                 .strength(1.0f)
                 .isSuffocating((s, r, p) -> false).isViewBlocking((s, r, p) -> false));

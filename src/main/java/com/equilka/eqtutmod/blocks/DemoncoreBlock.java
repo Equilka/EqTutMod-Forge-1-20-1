@@ -36,12 +36,12 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import java.util.List;
 
 public class DemoncoreBlock extends Block {
-    public static BooleanProperty ACTIVATED = BooleanProperty.create("activated");
+    public static final BooleanProperty ACTIVATED = BooleanProperty.create("activated");
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
-    public DemoncoreBlock(){
+    public DemoncoreBlock() {
         super(BlockBehaviour.Properties.of()
-                .mapColor(MapColor.STONE)
+                .mapColor(MapColor.COLOR_CYAN)
                 .lightLevel(state -> state.getValue(ACTIVATED) ? 15 : 2));
     }
 
@@ -62,7 +62,7 @@ public class DemoncoreBlock extends Block {
 
     @Override
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource source) {
-        if (state.getValue(ACTIVATED)){
+        if (state.getValue(ACTIVATED)) {
             AABB area = new AABB(pos).inflate(1);
             List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class, area);
             for (LivingEntity entity : entities) {
@@ -71,15 +71,21 @@ public class DemoncoreBlock extends Block {
                 entity.addEffect(new MobEffectInstance(MobEffects.WITHER, 80, 1));
                 entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200, 1));
             }
-            level.playSound(null, pos, SoundEvents.BASALT_STEP, SoundSource.BLOCKS, 2.0F, 1.0F);
+            level.playSound(null, pos, SoundEvents.BASALT_STEP, SoundSource.BLOCKS, 2.0F, 10.0F);
         }
         level.scheduleTick(pos, this, 20);
     }
 
     @Override
+    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
+
+        pLevel.scheduleTick(pPos, this, 5);
+    }
+
+    @Override
     public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (!world.isClientSide) {
-            if (player.getMainHandItem().isEmpty()){
+            if (player.getMainHandItem().isEmpty()) {
                 ItemStack stack = new ItemStack(ModItemInit.SCREWDRIVER.get());
 
                 double x = pos.getX() + 0.5;
@@ -92,7 +98,8 @@ public class DemoncoreBlock extends Block {
 
                 world.setBlock(pos, state.setValue(ACTIVATED, true), 3);
             } else if (player.getMainHandItem().is(ModItemInit.SCREWDRIVER.get())) {
-                player.getMainHandItem().shrink(1);
+                if (!player.isCreative())
+                    player.getMainHandItem().shrink(1);
 
                 world.setBlock(pos, state.setValue(ACTIVATED, false), 3);
             }

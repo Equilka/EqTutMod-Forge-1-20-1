@@ -1,0 +1,20 @@
+{
+  "multipart": [
+    {
+      "when": { "activated": "true" },
+      "apply": { "model": "eqtutmod:block/moj_block_rgb" }
+    },
+    {
+      "when": { "activated": "false", "color": "red" },
+      "apply": { "model": "eqtutmod:block/moj_block_red" }
+    },
+    {
+      "when": { "activated": "false", "color": "green" },
+      "apply": { "model": "eqtutmod:block/moj_block_green" }
+    },
+    {
+      "when": { "activated": "false", "color": "blue" },
+      "apply": { "model": "eqtutmod:block/moj_block_blue" }
+    }
+  ]
+}

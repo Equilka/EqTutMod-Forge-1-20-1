@@ -1,14 +1,18 @@
 package com.equilka.eqtutmod.blocks;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.FallingBlockEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FallingBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -16,6 +20,9 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class BoulderBlock extends FallingBlock {
     private static final VoxelShape BOULDER_PART1 = Block.box(4.0, 0.0, 4.0, 12.0, 4.0, 12.0);
@@ -27,8 +34,12 @@ public class BoulderBlock extends FallingBlock {
     );
 
     public BoulderBlock(){
-        super(BlockBehaviour.Properties.of()
-                .mapColor(MapColor.STONE));
+        super(BlockBehaviour.Properties.copy(Blocks.STONE));
+    }
+
+    @Override
+    public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
+        pTooltip.add(Component.literal(Component.translatable("tooltip.item.eqtutmod.boulderblock").getString()));
     }
 
     @Override
