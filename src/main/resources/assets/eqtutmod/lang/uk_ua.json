@@ -8,6 +8,12 @@
   "block.eqtutmod.meat_block": "М'ясний блок",
   "block.eqtutmod.demoncore_block": "Демонове ядро",
   "block.eqtutmod.waxed_weathered_cut_copper_vertical_slab": "Навощена вивітрена різьблена мiдна вертикальна плита",
+  "block.eqtutmod.moj_block": "Мій блок",
 
-  "itemGroup.eqtutmod.mod_tab": "Модовий вміст"
+  "tooltip.item.eqtutmod.moj_block": "Пахне вершками",
+  "tooltip.item.eqtutmod.boulderblock": "Важко!",
+
+  "itemGroup.eqtutmod.mod_tab": "Модовий вміст",
+
+  "system_message.block_break": "Блок було зламано: "
 }

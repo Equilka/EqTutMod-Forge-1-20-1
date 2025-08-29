@@ -21,6 +21,7 @@ public class ModTabInit {
                 tabData.accept(ModBlockInit.DEMONCORE_BLOCK.get());
                 tabData.accept(ModBlockInit.MEAT_BLOCK.get());
                 tabData.accept(ModBlockInit.WAXED_WEATHERED_CUT_COPPER_VERTICAL_SLAB.get());
+                tabData.accept(ModBlockInit.MOJ_BLOCK.get());
                 tabData.accept(ModItemInit.BADAPPLE.get());
                 tabData.accept(ModItemInit.PLASTER.get());
                 tabData.accept(ModItemInit.SCREWDRIVER.get());

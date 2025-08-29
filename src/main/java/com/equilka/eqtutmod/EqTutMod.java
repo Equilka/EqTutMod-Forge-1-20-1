@@ -10,15 +10,14 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
-@Mod("eqtutmod")
+@Mod(EqTutMod.MODID)
 public class EqTutMod
 {
     public static final String MODID = "eqtutmod";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public EqTutMod(FMLJavaModLoadingContext context)
-    {
-        IEventBus modEventBus = context.getModEventBus();
+    public EqTutMod() {
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModBlockInit.REGISTER.register(modEventBus);
         ModItemInit.REGISTER.register(modEventBus);

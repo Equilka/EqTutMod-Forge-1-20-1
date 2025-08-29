@@ -8,6 +8,12 @@
   "block.eqtutmod.meat_block": "Meat Block",
   "block.eqtutmod.demoncore_block": "Demoncore",
   "block.eqtutmod.waxed_weathered_cut_copper_vertical_slab": "Waxed Weathered Cut Copper Vertical Slab",
+  "block.eqtutmod.moj_block": "My Block",
 
-  "itemGroup.eqtutmod.mod_tab": "Mod Content"
+  "tooltip.item.eqtutmod.moj_block": "Smells like cream",
+  "tooltip.item.eqtutmod.boulderblock": "Heavy!",
+
+  "itemGroup.eqtutmod.mod_tab": "Mod Content",
+
+  "system_message.block_break": "Block was broken: "
 }

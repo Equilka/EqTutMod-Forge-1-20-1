@@ -4,5 +4,5 @@
     "all": "eqtutmod:block/sky_block",
     "particle": "eqtutmod:block/sky_block"
   },
-  "ambientocclusion": true
+  "ambientocclusion": false
 }
