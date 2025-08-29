@@ -23,7 +23,7 @@ public class MeatBlock extends Block {
 
     public MeatBlock(){
         super(BlockBehaviour.Properties.of()
-                .mapColor(MapColor.STONE));
+                .mapColor(MapColor.COLOR_RED));
     }
 
     @Override

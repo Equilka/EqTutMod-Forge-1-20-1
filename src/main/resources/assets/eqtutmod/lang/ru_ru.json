@@ -8,6 +8,12 @@
   "block.eqtutmod.meat_block": "Мясной блок",
   "block.eqtutmod.demoncore_block": "Демоническое ядро",
   "block.eqtutmod.waxed_weathered_cut_copper_vertical_slab": "Вощёная выветрившаяся резная медная вертикальная плита",
+  "block.eqtutmod.moj_block": "Мой блок",
 
-  "itemGroup.eqtutmod.mod_tab": "Модовый контент"
+  "tooltip.item.eqtutmod.moj_block": "Пахнет сливками",
+  "tooltip.item.eqtutmod.boulderblock": "Тяжело!",
+
+  "itemGroup.eqtutmod.mod_tab": "Модовый контент",
+
+  "system_message.block_break": "Блок был сломан: "
 }

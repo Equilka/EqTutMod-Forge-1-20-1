@@ -1,0 +1,17 @@
+package com.equilka.eqtutmod.events;
+
+import net.minecraftforge.event.level.BlockEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+
+import java.util.List;
+
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
+public class GameEventsNotifier {
+
+    @SubscribeEvent
+    public static void onBlockBreak(BlockEvent.BreakEvent event){
+
+    }
+
+}

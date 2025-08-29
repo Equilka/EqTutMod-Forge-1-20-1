@@ -21,7 +21,7 @@ public class ModBlockInit {
     public static final RegistryObject<Block> DEMONCORE_BLOCK = registerBlock("demoncore_block", DemoncoreBlock::new);
     public static final RegistryObject<Block> WAXED_WEATHERED_CUT_COPPER_VERTICAL_SLAB = registerBlock("waxed_weathered_cut_copper_vertical_slab",
             WaxedWeatheredCutCopperVerticalSlabBlock::new);
-
+    public static final RegistryObject<Block> MOJ_BLOCK = registerBlock("moj_block", MojBlock::new);
 
     private static <T extends Block> RegistryObject<T> registerBlock (String name, Supplier<T> properties) {
         RegistryObject<T> block = REGISTER.register(name, properties);
