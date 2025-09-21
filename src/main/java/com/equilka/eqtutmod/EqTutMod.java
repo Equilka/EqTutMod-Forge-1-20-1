@@ -2,6 +2,7 @@ package com.equilka.eqtutmod;
 
 import com.equilka.eqtutmod.init.ModBlockInit;
 import com.equilka.eqtutmod.init.ModItemInit;
+import com.equilka.eqtutmod.init.ModRecipesInit;
 import com.equilka.eqtutmod.init.ModTabInit;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
@@ -22,6 +23,7 @@ public class EqTutMod
         ModBlockInit.REGISTER.register(modEventBus);
         ModItemInit.REGISTER.register(modEventBus);
         ModTabInit.REGISTER.register(modEventBus);
+        ModRecipesInit.REGISTER.register(modEventBus);
 
 
         MinecraftForge.EVENT_BUS.register(this);
