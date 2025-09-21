@@ -39,7 +39,7 @@ public class BoulderBlock extends FallingBlock {
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
-        pTooltip.add(Component.literal(Component.translatable("tooltip.item.eqtutmod.boulderblock").getString()));
+        pTooltip.add(Component.literal(Component.translatable("tooltip.item.eqtutmod.boulder_block").getString()));
     }
 
     @Override

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "-": {
+      "item": "minecraft:iron_nugget"
+    }
+  },
+  "pattern": [
+    "#-"
+  ],
+  "result": {
+    "item": "eqtutmod:screwdriver_item"
+  },
+  "show_notification": true
+}

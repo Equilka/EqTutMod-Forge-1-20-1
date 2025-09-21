@@ -25,6 +25,8 @@ public class ModTabInit {
                 tabData.accept(ModItemInit.BADAPPLE.get());
                 tabData.accept(ModItemInit.PLASTER.get());
                 tabData.accept(ModItemInit.SCREWDRIVER.get());
+                tabData.accept(ModItemInit.CURSEDCORE.get());
+                tabData.accept(ModItemInit.SACRIFICIALBLADE.get());
             })
             .build());
 }

@@ -12,8 +12,8 @@ public class GameEventsNotifier {
 
 //    @SubscribeEvent
 //    public static void onBlockBreak(BlockEvent.BreakEvent event){
-//        event.getPlayer().sendSystemMessage(Component.literal(Component.translatable("system_message.block_break").getString()
-//                + event.getState().getBlock().getName().getString()));
+//        event.getPlayer().displayClientMessage(Component.literal(Component.translatable("system_message.eqtutmod.block_break").getString()
+//                + event.getState().getBlock().getName().getString()), true);
 //    }
 
 }

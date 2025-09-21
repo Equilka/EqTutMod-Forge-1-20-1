@@ -2,6 +2,8 @@
   "item.eqtutmod.screwdriver_item": "Screwdriver",
   "item.eqtutmod.plaster_item": "Plaster",
   "item.eqtutmod.bad_apple_item": "Bad Apple",
+  "item.eqtutmod.sacrificial_blade_item": "Sacrificial Blade",
+  "item.eqtutmod.cursed_core_item": "Cursed Core",
 
   "block.eqtutmod.boulder_block": "Boulder",
   "block.eqtutmod.sky_block": "Sky Block",
@@ -11,9 +13,13 @@
   "block.eqtutmod.moj_block": "My Block",
 
   "tooltip.item.eqtutmod.moj_block": "Smells like cream",
-  "tooltip.item.eqtutmod.boulderblock": "Heavy!",
+  "tooltip.item.eqtutmod.boulder_block": "Heavy!",
+  "tooltip.item.eqtutmod.sacrificial_blade_item": "Soul consumed: ",
+
+  "system_message.eqtutmod.soul.accepted": "Blade accepted the soul",
+  "system_message.eqtutmod.soul.withered": "Soul withered",
 
   "itemGroup.eqtutmod.mod_tab": "Mod Content",
 
-  "system_message.block_break": "Block was broken: "
+  "system_message.eqtutmod.block_break": "Block was broken: "
 }
