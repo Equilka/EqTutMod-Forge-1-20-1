@@ -34,7 +34,8 @@ public class BoulderBlock extends FallingBlock {
     );
 
     public BoulderBlock(){
-        super(BlockBehaviour.Properties.copy(Blocks.STONE));
+        super(BlockBehaviour.Properties.copy(Blocks.STONE)
+                .requiresCorrectToolForDrops());
     }
 
     @Override

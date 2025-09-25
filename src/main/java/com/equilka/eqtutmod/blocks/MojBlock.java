@@ -30,7 +30,8 @@ public class MojBlock extends Block {
     public static final IntegerProperty CLICKS = IntegerProperty.create("clicks", 0, 5);
 
     public MojBlock() {
-        super(BlockBehaviour.Properties.copy(Blocks.GREEN_WOOL));
+        super(BlockBehaviour.Properties.copy(Blocks.GREEN_WOOL)
+                .requiresCorrectToolForDrops());
     }
 
     @Override

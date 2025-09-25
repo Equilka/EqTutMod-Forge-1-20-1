@@ -22,8 +22,8 @@ public class WaxedWeatheredCutCopperVerticalSlabBlock extends Block {
     private static final VoxelShape SHAPE_EAST  = Block.box(0, 0, 0, 8, 16, 16);
 
     public WaxedWeatheredCutCopperVerticalSlabBlock() {
-        super(BlockBehaviour.Properties.copy(Blocks.WAXED_WEATHERED_CUT_COPPER_SLAB));
-        registerDefaultState(defaultBlockState().setValue(FACING, Direction.NORTH));
+        super(BlockBehaviour.Properties.copy(Blocks.WAXED_WEATHERED_CUT_COPPER_SLAB)
+                .requiresCorrectToolForDrops());
     }
 
     @Override
@@ -35,7 +35,6 @@ public class WaxedWeatheredCutCopperVerticalSlabBlock extends Block {
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING);
     }
-
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
