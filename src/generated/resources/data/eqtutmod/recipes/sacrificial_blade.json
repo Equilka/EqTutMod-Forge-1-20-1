@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": [],
+  "base": {
+    "item": "minecraft:iron_sword"
+  },
+  "result": {
+    "item": "eqtutmod:sacrificial_blade_item"
+  },
+  "template": {
+    "item": "eqtutmod:cursed_core_item"
+  }
+}

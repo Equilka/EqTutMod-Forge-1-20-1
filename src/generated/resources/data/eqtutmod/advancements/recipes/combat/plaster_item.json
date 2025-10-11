@@ -1,0 +1,27 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "eqtutmod:plaster_item"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "player_was_hurt": {
+      "conditions": {},
+      "trigger": "minecraft:entity_hurt_player"
+    }
+  },
+  "requirements": [
+    [
+      "player_was_hurt",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "eqtutmod:plaster_item"
+    ]
+  },
+  "sends_telemetry_event": false
+}

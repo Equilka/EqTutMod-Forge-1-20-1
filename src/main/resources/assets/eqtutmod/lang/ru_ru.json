@@ -2,6 +2,8 @@
   "item.eqtutmod.screwdriver_item": "Отвёртка",
   "item.eqtutmod.plaster_item": "Пластырь",
   "item.eqtutmod.bad_apple_item": "Плохое яблоко",
+  "item.eqtutmod.sacrificial_blade_item": "Жертвенный клинок",
+  "item.eqtutmod.cursed_core_item": "Проклятое ядро",
 
   "block.eqtutmod.boulder_block": "Валун",
   "block.eqtutmod.sky_block": "Блок неба",
@@ -12,8 +14,12 @@
 
   "tooltip.item.eqtutmod.moj_block": "Пахнет сливками",
   "tooltip.item.eqtutmod.boulderblock": "Тяжело!",
+  "tooltip.item.eqtutmod.sacrificial_blade_item": "Поглощённая душа: ",
+
+  "system_message.eqtutmod.soul.accepted": "Клинок принял душу",
+  "system_message.eqtutmod.soul.withered": "Душа иссохла",
 
   "itemGroup.eqtutmod.mod_tab": "Модовый контент",
 
-  "system_message.block_break": "Блок был сломан: "
+  "system_message.eqtutmod.block_break": "Блок был сломан: "
 }

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:smooth_stone"
+    },
+    "-": {
+      "item": "eqtutmod:screwdriver_item"
+    },
+    "@": {
+      "item": "eqtutmod:cursed_core_item"
+    }
+  },
+  "pattern": [
+    "###",
+    "-@ ",
+    "###"
+  ],
+  "result": {
+    "item": "eqtutmod:demoncore_block"
+  },
+  "show_notification": true
+}

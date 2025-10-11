@@ -2,6 +2,8 @@
   "item.eqtutmod.screwdriver_item": "Викрутка",
   "item.eqtutmod.plaster_item": "Пластир",
   "item.eqtutmod.bad_apple_item": "Погане яблуко",
+  "item.eqtutmod.sacrificial_blade_item": "Жертовний клинок",
+  "item.eqtutmod.cursed_core_item": "Прокляте ядро",
 
   "block.eqtutmod.boulder_block": "Брила",
   "block.eqtutmod.sky_block": "Блок неба",
@@ -12,8 +14,12 @@
 
   "tooltip.item.eqtutmod.moj_block": "Пахне вершками",
   "tooltip.item.eqtutmod.boulderblock": "Важко!",
+  "tooltip.item.eqtutmod.sacrificial_blade_item": "Поглинута душа: ",
+
+  "system_message.eqtutmod.soul.accepted": "Клинок прийняв душу",
+  "system_message.eqtutmod.soul.withered": "Душа зів’яла",
 
   "itemGroup.eqtutmod.mod_tab": "Модовий вміст",
 
-  "system_message.block_break": "Блок було зламано: "
+  "system_message.eqtutmod.block_break": "Блок було зламано: "
 }

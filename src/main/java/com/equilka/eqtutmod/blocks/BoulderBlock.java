@@ -34,12 +34,13 @@ public class BoulderBlock extends FallingBlock {
     );
 
     public BoulderBlock(){
-        super(BlockBehaviour.Properties.copy(Blocks.STONE));
+        super(BlockBehaviour.Properties.copy(Blocks.STONE)
+                .requiresCorrectToolForDrops());
     }
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
-        pTooltip.add(Component.literal(Component.translatable("tooltip.item.eqtutmod.boulderblock").getString()));
+        pTooltip.add(Component.literal(Component.translatable("tooltip.item.eqtutmod.boulder_block").getString()));
     }
 
     @Override

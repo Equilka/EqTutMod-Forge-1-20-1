@@ -25,7 +25,8 @@ public class SkyBlock extends Block {
                 .mapColor(MapColor.COLOR_LIGHT_BLUE)
                 .noOcclusion()
                 .strength(1.0f)
-                .isSuffocating((s, r, p) -> false).isViewBlocking((s, r, p) -> false));
+                .isSuffocating((s, r, p) -> false).isViewBlocking((s, r, p) -> false)
+                .requiresCorrectToolForDrops());
     }
 
     @Override

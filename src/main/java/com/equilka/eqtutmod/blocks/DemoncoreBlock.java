@@ -42,7 +42,8 @@ public class DemoncoreBlock extends Block {
     public DemoncoreBlock() {
         super(BlockBehaviour.Properties.of()
                 .mapColor(MapColor.COLOR_CYAN)
-                .lightLevel(state -> state.getValue(ACTIVATED) ? 15 : 2));
+                .lightLevel(state -> state.getValue(ACTIVATED) ? 15 : 2)
+                .requiresCorrectToolForDrops());
     }
 
     @Override
