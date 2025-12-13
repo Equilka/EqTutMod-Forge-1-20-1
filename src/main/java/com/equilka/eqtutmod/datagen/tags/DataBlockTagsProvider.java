@@ -2,6 +2,8 @@ package com.equilka.eqtutmod.datagen.tags;
 
 import com.equilka.eqtutmod.EqTutMod;
 import com.equilka.eqtutmod.init.ModBlockInit;
+import com.equilka.eqtutmod.init.ModItemInit;
+import com.equilka.eqtutmod.init.ModTagInit;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -52,5 +54,11 @@ public class DataBlockTagsProvider extends BlockTagsProvider {
                         ModBlockInit.SKY_BLOCK.get(),
                         ModBlockInit.DEMONCORE_BLOCK.get(),
                         ModBlockInit.MOJ_BLOCK.get());
+
+        this.tag(ModTagInit.Blocks.CURSED)
+                .add(
+                        ModBlockInit.MEAT_BLOCK.get(),
+                        ModBlockInit.DEMONCORE_BLOCK.get(),
+                        ModBlockInit.WAXED_WEATHERED_CUT_COPPER_VERTICAL_SLAB.get());
     }
 }

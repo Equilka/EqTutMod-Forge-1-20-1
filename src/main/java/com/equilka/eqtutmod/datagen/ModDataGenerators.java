@@ -1,10 +1,13 @@
 package com.equilka.eqtutmod.datagen;
 
 import com.equilka.eqtutmod.datagen.tags.DataBlockTagsProvider;
+import com.equilka.eqtutmod.datagen.tags.DataItemTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.tags.TagsProvider;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -26,6 +29,7 @@ public class ModDataGenerators {
 
         generator.addProvider(event.includeServer(), new DataLootTableProvider(packOutput));
 
-        generator.addProvider(event.includeServer(), new DataBlockTagsProvider(packOutput, lookupProvider, existingFileHelper));
+        DataBlockTagsProvider blockGenerator = generator.addProvider(event.includeServer(), new DataBlockTagsProvider(packOutput, lookupProvider, existingFileHelper));
+        generator.addProvider(event.includeServer(), new DataItemTagsProvider(packOutput, lookupProvider, blockGenerator.contentsGetter(), existingFileHelper));
     }
 }
