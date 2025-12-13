@@ -1,0 +1,7 @@
+// 1.20.1	2025-09-27T00:08:48.1958062	Tags for minecraft:block mod id eqtutmod
+be3f1feb34e180fc44565e899fd47d11336170cc data/eqtutmod/tags/blocks/cursed.json
+71d346cedc2d43b0439101fb1802404cb95bd51c data/forge/tags/blocks/glass.json
+f5af30e7a354c157939c075c143e74e9fbb229d3 data/forge/tags/blocks/needs_wood_tool.json
+a6da5ceaed1fc59c59c9a121e26773d65d889b64 data/forge/tags/blocks/stone.json
+4f589fece536acf303251943132939ed858596d0 data/minecraft/tags/blocks/mineable/pickaxe.json
+cc712b742ea9bdc3b9ae3b96ea0745e9957cfac8 data/minecraft/tags/blocks/needs_diamond_tool.json
