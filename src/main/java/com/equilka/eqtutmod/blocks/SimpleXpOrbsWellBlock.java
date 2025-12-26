@@ -1,47 +1,99 @@
 package com.equilka.eqtutmod.blocks;
 
 import com.equilka.eqtutmod.blocks.entity.SimpleXpOrbsWellBlockEntity;
+import com.equilka.eqtutmod.init.ModBlockEntityTypeInit;
+import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.*;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseEntityBlock;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEventListener;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Optional;
+
 public class SimpleXpOrbsWellBlock extends BaseEntityBlock {
+    public static final IntegerProperty FILLED = IntegerProperty.create("filled", 0, 4);
+
     public SimpleXpOrbsWellBlock() {
-        super(BlockBehaviour.Properties.of()
+        super(Properties.of()
                 .mapColor(MapColor.COLOR_LIGHT_GREEN)
-                .requiresCorrectToolForDrops());
+                .requiresCorrectToolForDrops()
+                .strength(10)
+                .sound(SoundType.AMETHYST));
+
+        this.registerDefaultState(this.stateDefinition.any().setValue(FILLED, 0));
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(FILLED);
     }
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        SimpleXpOrbsWellBlockEntity entity = (SimpleXpOrbsWellBlockEntity) pLevel.getBlockEntity(pPos);
-        int maxXp = entity.getMaxXp();
-        int storedXp = entity.getStoredXp();
-        int playerXp = pPlayer.totalExperience;
-        int returnedXp = (storedXp + playerXp) % maxXp;
-        int addedXp = storedXp + playerXp - returnedXp;
-
-        pPlayer.totalExperience = returnedXp;
-        if (maxXp < playerXp) {
-            pLevel.destroyBlock(pPos, false);
-            popExperience((ServerLevel) pLevel, pPos, addedXp);
+        if (pLevel.isClientSide())
             return InteractionResult.SUCCESS;
+
+        BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
+        if (!(blockEntity instanceof SimpleXpOrbsWellBlockEntity entity))
+            return InteractionResult.SUCCESS;
+
+        if (pPlayer.isCrouching()) {
+            NetworkHooks.openScreen((ServerPlayer) pPlayer,entity,pPos);
+            return InteractionResult.CONSUME;
         }
 
-        entity.addXp(addedXp);
+        int storedXp = entity.getData().get(0);
+        int maxXp = entity.getData().get(1);
+
+        int playerXp = pPlayer.totalExperience;
+        if (playerXp <= 0)
+            return InteractionResult.CONSUME;
+
+        pPlayer.giveExperiencePoints(-playerXp);
+
+        int spaceLeft = maxXp - storedXp;
+        int toAdd = Math.min(spaceLeft, playerXp);
+        int leftover = playerXp - toAdd;
+
+        int newXp = storedXp + toAdd;
+        entity.getData().set(0, newXp);
+
+        pPlayer.giveExperiencePoints(leftover);
+
+        if (newXp >= maxXp) {
+            pLevel.destroyBlock(pPos, false);
+            pPlayer.giveExperiencePoints(newXp);
+            return InteractionResult.SUCCESS;
+        }
+        pLevel.setBlock(pPos, pState.setValue(FILLED, maxXp == 0 ? 0 : Math.min(4, (storedXp - 1) / 90 + 1)), 3);
+        pLevel.playSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), SoundEvents.ENDER_EYE_DEATH, SoundSource.BLOCKS, 0.5F, pLevel.random.nextFloat() * 0.1F + 0.9F);
         return InteractionResult.SUCCESS;
     }
 
@@ -58,5 +110,43 @@ public class SimpleXpOrbsWellBlock extends BaseEntityBlock {
     @Override
     public @Nullable <T extends BlockEntity> GameEventListener getListener(ServerLevel pLevel, T pBlockEntity) {
         return super.getListener(pLevel, pBlockEntity);
+    }
+
+    @Override
+    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pMovedByPiston) {
+        if (pState.is(pNewState.getBlock()))
+            return;
+
+        BlockEntity entity = pLevel.getBlockEntity(pPos);
+        if (entity instanceof SimpleXpOrbsWellBlockEntity blockEntity && pLevel instanceof ServerLevel serverLevel) {
+            int storedXp = blockEntity.getData().get(0);
+            entity.setRemoved();
+            popExperience(serverLevel, pPos, storedXp);
+        }
+    }
+
+    @Override
+    public RenderShape getRenderShape(BlockState state) {
+        return RenderShape.MODEL;
+    }
+
+    @Override
+    public boolean isOcclusionShapeFullBlock(BlockState state, BlockGetter level, BlockPos pos) {
+        return true;
+    }
+
+    @Override
+    public boolean propagatesSkylightDown(BlockState state, BlockGetter reader, BlockPos pos) {
+        return true;
+    }
+
+    @Override
+    public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
+        return 0;
+    }
+
+    @Override
+    public VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+        return Shapes.empty();
     }
 }

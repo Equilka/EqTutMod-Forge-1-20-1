@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "filled=0": {
+      "model": "eqtutmod:block/simple_xp_orbs_well_block0"
+    },
+    "filled=1": {
+      "model": "eqtutmod:block/simple_xp_orbs_well_block1"
+    },
+    "filled=2": {
+      "model": "eqtutmod:block/simple_xp_orbs_well_block2"
+    },
+    "filled=3": {
+      "model": "eqtutmod:block/simple_xp_orbs_well_block3"
+    },
+    "filled=4": {
+      "model": "eqtutmod:block/simple_xp_orbs_well_block4"
+    }
+  }
+}
+

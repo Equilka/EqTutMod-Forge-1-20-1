@@ -11,6 +11,8 @@
   "block.eqtutmod.demoncore_block": "Demoncore",
   "block.eqtutmod.waxed_weathered_cut_copper_vertical_slab": "Waxed Weathered Cut Copper Vertical Slab",
   "block.eqtutmod.moj_block": "My Block",
+  "block.eqtutmod.simple_xp_orbs_well_block": "Simple Xp Orbs Well Block",
+  "block.eqtutmod.simple_xp_orbs_well_block.ui.orbs_count": "Orbs stored:",
 
   "tooltip.item.eqtutmod.moj_block": "Smells like cream",
   "tooltip.item.eqtutmod.boulder_block": "Heavy!",
