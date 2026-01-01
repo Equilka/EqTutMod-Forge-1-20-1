@@ -2,6 +2,7 @@ package com.equilka.eqtutmod.init;
 
 import com.equilka.eqtutmod.EqTutMod;
 import com.equilka.eqtutmod.client.gui.screens.SimpleXpOrbsWellBlockScreen;
+import com.equilka.eqtutmod.client.gui.screens.UpgradedXpOrbsWellBlockScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -14,6 +15,6 @@ public class ModScreenInit {
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
         MenuScreens.register(ModMenuTypeInit.SIMPLE_XP_ORBS_WELL_BLOCK_MENU.get(), SimpleXpOrbsWellBlockScreen::new);
-
+        MenuScreens.register(ModMenuTypeInit.UPGRADED_XP_ORBS_WELL_BLOCK_MENU.get(), UpgradedXpOrbsWellBlockScreen::new);
     }
 }

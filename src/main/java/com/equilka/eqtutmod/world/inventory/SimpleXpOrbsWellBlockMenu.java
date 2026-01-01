@@ -15,8 +15,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
 public class SimpleXpOrbsWellBlockMenu extends AbstractContainerMenu {
-    private final SimpleXpOrbsWellBlockEntity blockEntity;
-    private final Container container;
+    protected SimpleXpOrbsWellBlockEntity blockEntity;
+    protected Container container;
 
     public SimpleXpOrbsWellBlockMenu(int pContainerId, Inventory pPlayerInventory, FriendlyByteBuf buf) {
         this(pContainerId, pPlayerInventory,
@@ -53,15 +53,11 @@ public class SimpleXpOrbsWellBlockMenu extends AbstractContainerMenu {
 
     @Override
     public ItemStack quickMoveStack(Player pPlayer, int pIndex) {
-        return null;
+        return ItemStack.EMPTY;
     }
 
     @Override
-    public boolean stillValid(Player player) {
-        return stillValid(
-                ContainerLevelAccess.create(blockEntity.getLevel(), blockEntity.getBlockPos()),
-                player,
-                ModBlockInit.SIMPLE_XP_ORBS_WELL_BLOCK.get()
-        );
+    public boolean stillValid(Player pPlayer) {
+        return this.container.stillValid(pPlayer);
     }
 }

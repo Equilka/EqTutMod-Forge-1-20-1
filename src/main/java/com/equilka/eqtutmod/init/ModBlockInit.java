@@ -23,6 +23,7 @@ public class ModBlockInit {
             WaxedWeatheredCutCopperVerticalSlabBlock::new);
     public static final RegistryObject<Block> MOJ_BLOCK = registerBlock("moj_block", MojBlock::new);
     public static final RegistryObject<Block> SIMPLE_XP_ORBS_WELL_BLOCK = registerBlock("simple_xp_orbs_well_block", SimpleXpOrbsWellBlock::new);
+    public static final RegistryObject<Block> UPGRADED_XP_ORBS_WELL_BLOCK = registerBlock("upgraded_xp_orbs_well_block", UpgradedXpOrbsWellBlock::new);
 
     private static <T extends Block> RegistryObject<T> registerBlock (String name, Supplier<T> properties) {
         RegistryObject<T> block = REGISTER.register(name, properties);

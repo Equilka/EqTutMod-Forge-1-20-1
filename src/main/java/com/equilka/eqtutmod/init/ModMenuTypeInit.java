@@ -2,6 +2,7 @@ package com.equilka.eqtutmod.init;
 
 import com.equilka.eqtutmod.EqTutMod;
 import com.equilka.eqtutmod.world.inventory.SimpleXpOrbsWellBlockMenu;
+import com.equilka.eqtutmod.world.inventory.UpgradedXpOrbsWellBlockMenu;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.MenuType;
@@ -17,4 +18,6 @@ public class ModMenuTypeInit {
 
     public static final RegistryObject<MenuType<SimpleXpOrbsWellBlockMenu>> SIMPLE_XP_ORBS_WELL_BLOCK_MENU = REGISTER.register("simple_xp_orbs_well_block_menu",
             () -> IForgeMenuType.create(SimpleXpOrbsWellBlockMenu::new));
+    public static final RegistryObject<MenuType<UpgradedXpOrbsWellBlockMenu>> UPGRADED_XP_ORBS_WELL_BLOCK_MENU = REGISTER.register("upgraded_xp_orbs_well_block_menu",
+            () -> IForgeMenuType.create(UpgradedXpOrbsWellBlockMenu::new));
 }

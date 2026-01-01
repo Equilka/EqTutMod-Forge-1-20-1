@@ -1,30 +1,21 @@
 package com.equilka.eqtutmod.blocks;
 
 import com.equilka.eqtutmod.blocks.entity.SimpleXpOrbsWellBlockEntity;
-import com.equilka.eqtutmod.init.ModBlockEntityTypeInit;
-import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.ChestBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEventListener;
 import net.minecraft.world.level.material.MapColor;
@@ -35,10 +26,10 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Optional;
-
-public class SimpleXpOrbsWellBlock extends BaseEntityBlock {
+public class SimpleXpOrbsWellBlock extends BaseEntityBlock{
     public static final IntegerProperty FILLED = IntegerProperty.create("filled", 0, 4);
+    protected int oneQuarter;
+    protected boolean isFragile;
 
     public SimpleXpOrbsWellBlock() {
         super(Properties.of()
@@ -48,6 +39,8 @@ public class SimpleXpOrbsWellBlock extends BaseEntityBlock {
                 .sound(SoundType.AMETHYST));
 
         this.registerDefaultState(this.stateDefinition.any().setValue(FILLED, 0));
+        this.oneQuarter = 90;
+        this.isFragile = true;
     }
 
     @Override
@@ -87,12 +80,17 @@ public class SimpleXpOrbsWellBlock extends BaseEntityBlock {
 
         pPlayer.giveExperiencePoints(leftover);
 
-        if (newXp >= maxXp) {
+        if (newXp >= maxXp && isFragile) {
             pLevel.destroyBlock(pPos, false);
             pPlayer.giveExperiencePoints(newXp);
             return InteractionResult.SUCCESS;
+        } else if (newXp >= maxXp && !isFragile) {
+            leftover = newXp - maxXp;
+            pPlayer.giveExperiencePoints(leftover);
+            entity.getData().set(0, newXp - leftover);
         }
-        pLevel.setBlock(pPos, pState.setValue(FILLED, maxXp == 0 ? 0 : Math.min(4, (storedXp - 1) / 90 + 1)), 3);
+
+        pLevel.setBlock(pPos, pState.setValue(FILLED, maxXp == 0 ? 0 : Math.min(4, (storedXp - 1) / oneQuarter + 1)), 3);
         pLevel.playSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), SoundEvents.ENDER_EYE_DEATH, SoundSource.BLOCKS, 0.5F, pLevel.random.nextFloat() * 0.1F + 0.9F);
         return InteractionResult.SUCCESS;
     }
