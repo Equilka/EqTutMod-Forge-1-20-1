@@ -27,7 +27,7 @@ public class UpgradedXpOrbsWellBlockScreen extends AbstractContainerScreen<Upgra
         int maxXp = menu.getMaxXp();
         int storedXp = menu.getStoredXp();
 
-        int barWidth = 102;
+        int barWidth = 105;
         int progress = maxXp == 0 ? 0 : (storedXp * barWidth) / maxXp;
 
         pGuiGraphics.blit(TEXTURE, leftPos, topPos, 0, 0, imageWidth, imageHeight - 9, imageWidth, imageHeight);

@@ -39,6 +39,7 @@ public class UpgradedXpOrbsWellBlock extends SimpleXpOrbsWellBlock {
 
         this.oneQuarter = 240;
         this.isFragile = false;
+        this.voxelShape = Block.box(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
     }
 
     @Override

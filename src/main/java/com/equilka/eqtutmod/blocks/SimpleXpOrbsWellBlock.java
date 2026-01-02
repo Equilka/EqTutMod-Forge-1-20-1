@@ -30,6 +30,7 @@ public class SimpleXpOrbsWellBlock extends BaseEntityBlock{
     public static final IntegerProperty FILLED = IntegerProperty.create("filled", 0, 4);
     protected int oneQuarter;
     protected boolean isFragile;
+    protected VoxelShape voxelShape;
 
     public SimpleXpOrbsWellBlock() {
         super(Properties.of()
@@ -41,6 +42,7 @@ public class SimpleXpOrbsWellBlock extends BaseEntityBlock{
         this.registerDefaultState(this.stateDefinition.any().setValue(FILLED, 0));
         this.oneQuarter = 90;
         this.isFragile = true;
+        this.voxelShape = Block.box(0.1, 0.0, 0.1, 15.9, 16.0, 15.9);
     }
 
     @Override
@@ -84,7 +86,7 @@ public class SimpleXpOrbsWellBlock extends BaseEntityBlock{
             pLevel.destroyBlock(pPos, false);
             pPlayer.giveExperiencePoints(newXp);
             return InteractionResult.SUCCESS;
-        } else if (newXp >= maxXp && !isFragile) {
+        } else if (newXp <= maxXp && !isFragile) {
             leftover = newXp - maxXp;
             pPlayer.giveExperiencePoints(leftover);
             entity.getData().set(0, newXp - leftover);
@@ -124,11 +126,6 @@ public class SimpleXpOrbsWellBlock extends BaseEntityBlock{
     }
 
     @Override
-    public RenderShape getRenderShape(BlockState state) {
-        return RenderShape.MODEL;
-    }
-
-    @Override
     public boolean isOcclusionShapeFullBlock(BlockState state, BlockGetter level, BlockPos pos) {
         return true;
     }
@@ -139,12 +136,24 @@ public class SimpleXpOrbsWellBlock extends BaseEntityBlock{
     }
 
     @Override
-    public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
-        return 0;
+    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+        return voxelShape;
+    }
+
+    public VoxelShape getOcclusionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
+        return voxelShape;
+    }
+
+    public RenderShape getRenderShape(BlockState pState) {
+        return RenderShape.MODEL;
+    }
+
+    public boolean useShapeForLightOcclusion(BlockState pState) {
+        return true;
     }
 
     @Override
-    public VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        return Shapes.empty();
+    public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
+        return state.getValue(FILLED);
     }
 }

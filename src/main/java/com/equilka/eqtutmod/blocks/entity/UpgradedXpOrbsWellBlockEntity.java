@@ -53,7 +53,10 @@ public class UpgradedXpOrbsWellBlockEntity extends SimpleXpOrbsWellBlockEntity {
         int currentXp = entity.data.get(0);
 
         if (input.is(Items.EXPERIENCE_BOTTLE)){
-            if (!output.isEmpty() && !output.is(Items.GLASS_BOTTLE))
+            if (!output.isEmpty() && !output.is(Items.GLASS_BOTTLE) || output.getCount() >= 64)
+                return;
+
+            if (currentXp + orbs >= entity.maxXp || output.getCount() >= 64)
                 return;
 
             entity.data.set(0, currentXp + orbs);
@@ -64,7 +67,7 @@ public class UpgradedXpOrbsWellBlockEntity extends SimpleXpOrbsWellBlockEntity {
             if (!output.isEmpty() && !output.is(Items.EXPERIENCE_BOTTLE))
                 return;
 
-            if (orbs > currentXp || orbs > entity.maxXp)
+            if (orbs >= currentXp || output.getCount() >= 64)
                 return;
 
             entity.data.set(0, currentXp - orbs);
@@ -73,8 +76,4 @@ public class UpgradedXpOrbsWellBlockEntity extends SimpleXpOrbsWellBlockEntity {
             entity.items.set(1, new ItemStack(Items.EXPERIENCE_BOTTLE, output.getCount() + 1));
         }
     }
-
-    /*
-    TODO: issues with xp bounds, model, stack overflow
-     */
 }
