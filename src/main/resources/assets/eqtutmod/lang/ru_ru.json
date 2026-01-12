@@ -4,6 +4,7 @@
   "item.eqtutmod.bad_apple_item": "Плохое яблоко",
   "item.eqtutmod.sacrificial_blade_item": "Жертвенный клинок",
   "item.eqtutmod.cursed_core_item": "Проклятое ядро",
+  "item.eqtutmod.earth_crystal_item": "Кристалл Земли",
 
   "block.eqtutmod.boulder_block": "Валун",
   "block.eqtutmod.sky_block": "Блок неба",
@@ -11,10 +12,16 @@
   "block.eqtutmod.demoncore_block": "Демоническое ядро",
   "block.eqtutmod.waxed_weathered_cut_copper_vertical_slab": "Вощёная выветрившаяся резная медная вертикальная плита",
   "block.eqtutmod.moj_block": "Мой блок",
+  "block.eqtutmod.simple_xp_orbs_well_block": "Простое хранилище опыта",
+  "block.eqtutmod.simple_xp_orbs_well_block.ui.orbs_count": "Хранится опыта:",
+  "block.eqtutmod.upgraded_xp_orbs_well_block": "Улучшенное хранилище опыта",
+  "block.eqtutmod.upgraded_xp_orbs_well_block.ui.orbs_count": "Хранится опыта:",
 
   "tooltip.item.eqtutmod.moj_block": "Пахнет сливками",
   "tooltip.item.eqtutmod.boulderblock": "Тяжело!",
   "tooltip.item.eqtutmod.sacrificial_blade_item": "Поглощённая душа: ",
+
+  "entity.eqtutmod.earth_crystal_entity": "Кристалл Земли",
 
   "system_message.eqtutmod.soul.accepted": "Клинок принял душу",
   "system_message.eqtutmod.soul.withered": "Душа иссохла",

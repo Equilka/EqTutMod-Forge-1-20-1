@@ -11,7 +11,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModTabInit {
     public static final DeferredRegister<CreativeModeTab> REGISTER = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, EqTutMod.MODID);
 
-    public static final RegistryObject<CreativeModeTab> EXAMPLE_TAB = REGISTER.register("mod_tab", () -> CreativeModeTab.builder()
+    public static final RegistryObject<CreativeModeTab> MOD_TAB = REGISTER.register("mod_tab", () -> CreativeModeTab.builder()
             .withTabsBefore(CreativeModeTabs.COMBAT)
             .title(Component.translatable("itemGroup.eqtutmod.mod_tab"))
             .icon(() -> ModBlockInit.MEAT_BLOCK.get().asItem().getDefaultInstance())
@@ -22,11 +22,15 @@ public class ModTabInit {
                 tabData.accept(ModBlockInit.MEAT_BLOCK.get());
                 tabData.accept(ModBlockInit.WAXED_WEATHERED_CUT_COPPER_VERTICAL_SLAB.get());
                 tabData.accept(ModBlockInit.MOJ_BLOCK.get());
+                tabData.accept(ModBlockInit.SIMPLE_XP_ORBS_WELL_BLOCK.get());
+                tabData.accept(ModBlockInit.UPGRADED_XP_ORBS_WELL_BLOCK.get());
+
                 tabData.accept(ModItemInit.BADAPPLE.get());
                 tabData.accept(ModItemInit.PLASTER.get());
                 tabData.accept(ModItemInit.SCREWDRIVER.get());
                 tabData.accept(ModItemInit.CURSEDCORE.get());
                 tabData.accept(ModItemInit.SACRIFICIALBLADE.get());
+                tabData.accept(ModItemInit.EARTHCRYSTAL.get());
             })
             .build());
 }

@@ -4,6 +4,7 @@
   "item.eqtutmod.bad_apple_item": "Погане яблуко",
   "item.eqtutmod.sacrificial_blade_item": "Жертовний клинок",
   "item.eqtutmod.cursed_core_item": "Прокляте ядро",
+  "item.eqtutmod.earth_crystal_item": "Кристал Землі",
 
   "block.eqtutmod.boulder_block": "Брила",
   "block.eqtutmod.sky_block": "Блок неба",
@@ -11,10 +12,16 @@
   "block.eqtutmod.demoncore_block": "Демонове ядро",
   "block.eqtutmod.waxed_weathered_cut_copper_vertical_slab": "Навощена вивітрена різьблена мiдна вертикальна плита",
   "block.eqtutmod.moj_block": "Мій блок",
+  "block.eqtutmod.simple_xp_orbs_well_block": "Просте сховище досвіду",
+  "block.eqtutmod.simple_xp_orbs_well_block.ui.orbs_count": "Збережено досвіду:",
+  "block.eqtutmod.upgraded_xp_orbs_well_block": "Покращене сховище досвіду",
+  "block.eqtutmod.upgraded_xp_orbs_well_block.ui.orbs_count": "Збережено досвіду:",
 
   "tooltip.item.eqtutmod.moj_block": "Пахне вершками",
   "tooltip.item.eqtutmod.boulderblock": "Важко!",
   "tooltip.item.eqtutmod.sacrificial_blade_item": "Поглинута душа: ",
+
+  "entity.eqtutmod.earth_crystal_entity": "Кристал Землі",
 
   "system_message.eqtutmod.soul.accepted": "Клинок прийняв душу",
   "system_message.eqtutmod.soul.withered": "Душа зів’яла",

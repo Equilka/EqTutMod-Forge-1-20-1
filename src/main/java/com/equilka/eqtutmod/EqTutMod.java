@@ -23,8 +23,7 @@ public class EqTutMod
         ModMenuTypeInit.REGISTER.register(modEventBus);
         ModTabInit.REGISTER.register(modEventBus);
         ModRecipesInit.REGISTER.register(modEventBus);
-
-
+        ModEntityInit.REGISTER.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }

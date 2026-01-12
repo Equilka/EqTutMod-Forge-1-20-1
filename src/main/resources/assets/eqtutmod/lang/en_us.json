@@ -4,6 +4,7 @@
   "item.eqtutmod.bad_apple_item": "Bad Apple",
   "item.eqtutmod.sacrificial_blade_item": "Sacrificial Blade",
   "item.eqtutmod.cursed_core_item": "Cursed Core",
+  "item.eqtutmod.earth_crystal_item": "Earth Crystal",
 
   "block.eqtutmod.boulder_block": "Boulder",
   "block.eqtutmod.sky_block": "Sky Block",
@@ -13,10 +14,14 @@
   "block.eqtutmod.moj_block": "My Block",
   "block.eqtutmod.simple_xp_orbs_well_block": "Simple Xp Orbs Well Block",
   "block.eqtutmod.simple_xp_orbs_well_block.ui.orbs_count": "Orbs stored:",
+  "block.eqtutmod.upgraded_xp_orbs_well_block": "Upgraded Xp Orbs Well Block",
+  "block.eqtutmod.upgraded_xp_orbs_well_block.ui.orbs_count": "Orbs stored:",
 
   "tooltip.item.eqtutmod.moj_block": "Smells like cream",
   "tooltip.item.eqtutmod.boulder_block": "Heavy!",
   "tooltip.item.eqtutmod.sacrificial_blade_item": "Soul consumed: ",
+
+  "entity.eqtutmod.earth_crystal_entity": "Earth Crystal",
 
   "system_message.eqtutmod.soul.accepted": "Blade accepted the soul",
   "system_message.eqtutmod.soul.withered": "Soul withered",

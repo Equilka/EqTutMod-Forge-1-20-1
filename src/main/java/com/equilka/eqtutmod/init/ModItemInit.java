@@ -15,4 +15,5 @@ public class ModItemInit {
     public static final RegistryObject<Item> BADAPPLE = REGISTER.register("bad_apple_item", BadAppleItem::new);
     public static final RegistryObject<Item> CURSEDCORE = REGISTER.register("cursed_core_item", CursedCoreItem::new);
     public static final RegistryObject<Item> SACRIFICIALBLADE = REGISTER.register("sacrificial_blade_item", SacrificialBladeItem::new);
+    public static final RegistryObject<Item> EARTHCRYSTAL = REGISTER.register("earth_crystal_item", EarthCrystalItem::new);
 }
